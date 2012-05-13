@@ -2,6 +2,7 @@
     "author": "@rvagg <rod@vagg.org>"
   , "name": "errno"
   , "description": "libuv errno details exposed"
+  , "keywords": [ "errors", "errno", "libuv" ]
   , "version": "0.0.1"
   , "main": "errno.js"
   , "dependencies": {}

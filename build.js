@@ -35,7 +35,9 @@ request(uvheadloc, function (err, response) {
     + data.map(function (e, i) {
         return '\'' + e.code + '\': all[' + i + ']'
       }).join('\n  , ')
-    + '\n}'
+    + '\n}\n\n'
+
+  out += '\nmodule.exports.custom = require("./custom")(module.exports)\n'
 
   fs.writeFile('errno.js', out)
 })

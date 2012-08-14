@@ -3,7 +3,7 @@
   , "name": "errno"
   , "description": "libuv errno details exposed"
   , "keywords": [ "errors", "errno", "libuv" ]
-  , "version": "0.0.1"
+  , "version": "0.0.2"
   , "main": "errno.js"
   , "dependencies": {}
   , "devDependencies": {

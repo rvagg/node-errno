@@ -400,3 +400,5 @@ module.exports.code = {
   , 'EIO': all[54]
   , 'EROFS': all[55]
 }
+
+module.exports.custom = require("./custom")(module.exports)

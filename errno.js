@@ -278,6 +278,21 @@ var all = module.exports.all = [
   "errno": 56,
   "code": "EROFS",
   "description": "read-only file system"
+ },
+ {
+  "errno": 57,
+  "code": "ENODEV",
+  "description": "no such device"
+ },
+ {
+  "errno": 58,
+  "code": "ESPIPE",
+  "description": "invalid seek"
+ },
+ {
+  "errno": 59,
+  "code": "ECANCELED",
+  "description": "operation canceled"
  }
 ]
 
@@ -339,6 +354,9 @@ module.exports.errno = {
   , '54': all[53]
   , '55': all[54]
   , '56': all[55]
+  , '57': all[56]
+  , '58': all[57]
+  , '59': all[58]
 }
 
 
@@ -399,6 +417,10 @@ module.exports.code = {
   , 'ENOSPC': all[53]
   , 'EIO': all[54]
   , 'EROFS': all[55]
+  , 'ENODEV': all[56]
+  , 'ESPIPE': all[57]
+  , 'ECANCELED': all[58]
 }
+
 
 module.exports.custom = require("./custom")(module.exports)

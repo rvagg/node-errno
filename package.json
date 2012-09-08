@@ -1,19 +1,22 @@
 {
-    "author": "@rvagg <rod@vagg.org>"
-  , "name": "errno"
+    "name": "errno"
+  , "authors": [
+       "Rod Vagg @rvagg <rod@vagg.org> (https://github.com/rvagg)"
+    ]
   , "description": "libuv errno details exposed"
   , "keywords": [ "errors", "errno", "libuv" ]
-  , "version": "0.0.2"
+  , "version": "0.0.3"
   , "main": "errno.js"
   , "dependencies": {}
   , "bin": {
-      "errno": "./cli.js"
+        "errno": "./cli.js"
     }
   , "devDependencies": {
         "request": "*"
     }
-  , "optionalDependencies": {}
-  , "engines": {
-        "node": "*"
+  , "repository": {
+        "type": "git"
+      , "url": "https://github.com/rvagg/node-errno.git"
     }
+  , "license"         : "MIT"
 }

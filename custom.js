@@ -14,10 +14,10 @@ function CustomError (message, cause) {
 
 CustomError.prototype = new Error()
 
-// Ender error factory
 function createError (errno, name, proto) {
   var err = function (message, cause) {
     init.call(this, name, message, cause)
+    //TODO: the specificity here is stupid, errno should be available everywhere
     if (name == 'FilesystemError') {
       this.code    = this.cause.code
       this.path    = this.cause.path

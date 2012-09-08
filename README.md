@@ -1,7 +1,14 @@
 # node-errno
-[libuv](https://github.com/joyent/libuv) errno details exposed. Available in npm as *errno*
 
-Ever find yourself needing more details about NodeJS errors? Me too, so *node-errno* contains the errno mappings direct from libuv so you can use them in your code.
+Better [libuv](https://github.com/joyent/libuv)/[Node.js](http://nodejs.org) error handling & reporting. Available in npm as *errno*.
+
+* [errno exposed](#errnoexposed)
+* [Custom errors](#customerrors)
+
+<a name="errnoexposed"></a>
+## errno exposed
+
+Ever find yourself needing more details about Node.js errors? Me too, so *node-errno* contains the errno mappings direct from libuv so you can use them in your code.
 
 **By errno:**
 
@@ -54,24 +61,62 @@ fs.readFile('thisisnotarealfile.txt', function (err, data) {
 })
 ```
 
-Use the command line tool
+**Use as a command line tool:**
 
-    ~ $ errno 53
-    {
-      "errno": 53,
-      "code": "ENOTEMPTY",
-      "description": "directory not empty"
-    }
-    ~ $ errno EROFS
-    {
-      "errno": 56,
-      "code": "EROFS",
-      "description": "read-only file system"
-    }
-    ~ $ errno unknown
-    undefined
+```
+~ $ errno 53
+{
+  "errno": 53,
+  "code": "ENOTEMPTY",
+  "description": "directory not empty"
+}
+~ $ errno EROFS
+{
+  "errno": 56,
+  "code": "EROFS",
+  "description": "read-only file system"
+}
+~ $ errno foo
+No such errno/code: "foo"
+```
 
-Supply no arguments for the full list
+Supply no arguments for the full list. Error codes are processed case-insensitive.
+
+You will need to install with `npm install errno -g` if you want the `errno` command to be available without supplying a full path to the node_modules installation.
+
+<a name="customerrors"></a>
+## Custom errors
+
+Use `errno.custom.createError()` to create custom `Error` objects to throw around in your Node.js library. Create error heirachies so `instanceof` becomes a useful tool in tracking errors. Call-stack is correctly captured at the time you create an instance of the error object, plus a `cause` property will make available the original error object if you pass one in to the constructor.
+
+```js
+var errno = require('errno')
+var MyError = errno.custom.createError('MyError') // inherits from Error
+var SpecificError = errno.custom.createError('SpecificError', MyError) // inherits from MyError
+var OtherError = errno.custom.createError('OtherError', MyError)
+
+// use them!
+if (condition) throw new SpecificError('Eeek! Something bad happened')
+
+if (err) return callback(new OtherError(err))
+```
+
+Also available is a `errno.custom.FilesystemError` with in-built access to errno properties:
+
+```js
+fs.readFile('foo', function (err, data) {
+  if (err) return callback(new errno.custom.FilesystemError(err))
+  // do something else
+})
+```
+
+The resulting error object passed through the callback will have the following properties: `code`, `errno`, `path` and `message` will contain a descriptive human-readable message.
+
+## Contributors
+
+* [bahamas10](https://github.com/bahamas10) (Dave Eddy) - Added CLI
+
+## Copyright & Licence
 
 *Copyright (c) 2012 [Rod Vagg](https://github.com/rvagg) ([@rvagg](https://twitter.com/rvagg))*
 

@@ -6,6 +6,9 @@
   , "version": "0.0.2"
   , "main": "errno.js"
   , "dependencies": {}
+  , "bin": {
+      "errno": "./cli.js"
+    }
   , "devDependencies": {
         "request": "*"
     }

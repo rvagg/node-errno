@@ -54,6 +54,25 @@ fs.readFile('thisisnotarealfile.txt', function (err, data) {
 })
 ```
 
+Use the command line tool
+
+    ~ $ errno 53
+    {
+      "errno": 53,
+      "code": "ENOTEMPTY",
+      "description": "directory not empty"
+    }
+    ~ $ errno EROFS
+    {
+      "errno": 56,
+      "code": "EROFS",
+      "description": "read-only file system"
+    }
+    ~ $ errno unknown
+    undefined
+
+Supply no arguments for the full list
+
 *Copyright (c) 2012 [Rod Vagg](https://github.com/rvagg) ([@rvagg](https://twitter.com/rvagg))*
 
 Made available under the MIT licence:

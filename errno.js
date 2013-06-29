@@ -27,7 +27,7 @@ var all = module.exports.all = [
  {
   "errno": 4,
   "code": "EAGAIN",
-  "description": "no more processes"
+  "description": "resource temporarily unavailable"
  },
  {
   "errno": 5,
@@ -37,17 +37,17 @@ var all = module.exports.all = [
  {
   "errno": 6,
   "code": "EADDRNOTAVAIL",
-  "description": ""
+  "description": "address not available"
  },
  {
   "errno": 7,
   "code": "EAFNOSUPPORT",
-  "description": ""
+  "description": "address family not supported"
  },
  {
   "errno": 8,
   "code": "EALREADY",
-  "description": ""
+  "description": "connection already in progress"
  },
  {
   "errno": 9,
@@ -207,27 +207,27 @@ var all = module.exports.all = [
  {
   "errno": 41,
   "code": "ECHARSET",
-  "description": ""
+  "description": "invalid Unicode character"
  },
  {
   "errno": 42,
   "code": "EAIFAMNOSUPPORT",
-  "description": ""
+  "description": "address family for hostname not supported"
  },
  {
   "errno": 44,
   "code": "EAISERVICE",
-  "description": ""
+  "description": "servname not supported for ai_socktype"
  },
  {
   "errno": 45,
   "code": "EAISOCKTYPE",
-  "description": ""
+  "description": "ai_socktype not supported"
  },
  {
   "errno": 46,
   "code": "ESHUTDOWN",
-  "description": ""
+  "description": "cannot send after transport endpoint shutdown"
  },
  {
   "errno": 47,

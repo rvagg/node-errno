@@ -7,7 +7,7 @@ assert(errno.all, 'errno.all not found')
 assert(errno.errno, 'errno.errno not found')
 assert(errno.code, 'errno.code not found')
 
-assert(errno.all.length === 56, 'found ' + errno.all.length + ', expected 56')
+assert(errno.all.length === 59, 'found ' + errno.all.length + ', expected 59')
 
 assert(errno.errno['-1'] === errno.all[0], 'errno -1 not first element')
 

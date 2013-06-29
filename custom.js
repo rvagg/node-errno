@@ -8,7 +8,8 @@ function init (name, message, cause) {
 // generic prototype, not intended to be actually used - helpful for `instanceof`
 function CustomError (message, cause) {
   Error.call(this)
-  Error.captureStackTrace(this, arguments.callee)
+  if (Error.captureStackTrace)
+    Error.captureStackTrace(this, arguments.callee)
   init.call(this, 'CustomError', message, cause)
 }
 
@@ -29,7 +30,8 @@ function createError (errno, name, proto) {
         + (this.cause.path ? ' [' + this.cause.path + ']' : '')
     }
     Error.call(this)
-    Error.captureStackTrace(this, arguments.callee)
+    if (Error.captureStackTrace)
+      Error.captureStackTrace(this, arguments.callee)
   }
   err.prototype = !!proto ? new proto() : new CustomError()
   return err

@@ -38,7 +38,9 @@ function createError (errno, name, proto) {
 }
 
 module.exports = function (errno) {
-  var ce = createError.bind(null, errno)
+  var ce = function (name, proto) {
+    return createError(errno, name, proto)
+  }
   return {
       CustomError     : CustomError
     , FilesystemError : ce('FilesystemError')

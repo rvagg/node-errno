@@ -424,3 +424,4 @@ module.exports.code = {
 
 
 module.exports.custom = require("./custom")(module.exports)
+module.exports.create = module.exports.custom.createError

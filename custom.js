@@ -1,8 +1,14 @@
-function init (name, message, cause) {
-  this.name      = name
-  // can be passed just a 'cause'
-  this.cause     = typeof message != 'string' ? message : cause
-  this.message   = !!message && typeof message != 'string' ? message.message : message
+const prr = require('prr')
+
+function init (type, message, cause) {
+  prr(this, {
+      type    : type
+    , name    : type
+      // can be passed just a 'cause'
+    , cause   : typeof message != 'string' ? message : cause
+    , message : !!message && typeof message != 'string' ? message.message : message
+
+  }, 'ewr')
 }
 
 // generic prototype, not intended to be actually used - helpful for `instanceof`
@@ -15,11 +21,11 @@ function CustomError (message, cause) {
 
 CustomError.prototype = new Error()
 
-function createError (errno, name, proto) {
+function createError (errno, type, proto) {
   var err = function (message, cause) {
-    init.call(this, name, message, cause)
+    init.call(this, type, message, cause)
     //TODO: the specificity here is stupid, errno should be available everywhere
-    if (name == 'FilesystemError') {
+    if (type == 'FilesystemError') {
       this.code    = this.cause.code
       this.path    = this.cause.path
       this.errno   = this.cause.errno
@@ -38,8 +44,8 @@ function createError (errno, name, proto) {
 }
 
 module.exports = function (errno) {
-  var ce = function (name, proto) {
-    return createError(errno, name, proto)
+  var ce = function (type, proto) {
+    return createError(errno, type, proto)
   }
   return {
       CustomError     : CustomError

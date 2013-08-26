@@ -16,3 +16,11 @@ assert(errno.code['UNKNOWN'] === errno.all[0], 'code UNKNOWN not first element')
 assert(errno.errno[1] === errno.all[2], 'errno 1 not third element')
 
 assert(errno.code['EOF'] === errno.all[2], 'code EOF not third element')
+
+var Cust = errno.create('FooNotBarError')
+var cust = new Cust('foo is not bar')
+
+assert(cust.name == 'FooNotBarError', 'correct custom name')
+assert(cust.type == 'FooNotBarError', 'correct custom type')
+assert(cust.message == 'foo is not bar', 'correct custom message')
+assert(!cust.cause, 'no cause')

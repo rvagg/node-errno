@@ -5,7 +5,7 @@
     ]
   , "description": "libuv errno details exposed"
   , "keywords": [ "errors", "errno", "libuv" ]
-  , "version": "0.0.5"
+  , "version": "0.1.0"
   , "main": "errno.js"
   , "dependencies": {
         "prr": "~0.0.0"

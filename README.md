@@ -38,26 +38,25 @@ require('errno').code.ENOTEMPTY
 var errno = require('errno')
 
 function errmsg(err) {
-    var str = 'Error: '
-    // if it's a libuv error then get the description from errno
-    if (errno.errno[err.errno]) {
-        str += errno.errno[err.errno].description
-    } else {
-        str += err.message
-    }
-    
-    // if it's a `fs` error then it'll have a 'path' property
-    if (err.path) {
-        str += ' [' + err.path + ']'
-    }
-    return str
+  var str = 'Error: '
+  // if it's a libuv error then get the description from errno
+  if (errno.errno[err.errno])
+    str += errno.errno[err.errno].description
+  else
+    str += err.message
+
+  // if it's a `fs` error then it'll have a 'path' property
+  if (err.path)
+    str += ' [' + err.path + ']'
+
+  return str
 }
 
 var fs = require('fs')
 
 fs.readFile('thisisnotarealfile.txt', function (err, data) {
-    if (err)
-        return console.log(errmsg(err))
+  if (err)
+    console.log(errmsg(err))
 })
 ```
 
@@ -90,10 +89,10 @@ You will need to install with `npm install errno -g` if you want the `errno` com
 Use `errno.custom.createError()` to create custom `Error` objects to throw around in your Node.js library. Create error heirachies so `instanceof` becomes a useful tool in tracking errors. Call-stack is correctly captured at the time you create an instance of the error object, plus a `cause` property will make available the original error object if you pass one in to the constructor.
 
 ```js
-var errno = require('errno')
-var MyError = errno.custom.createError('MyError') // inherits from Error
-var SpecificError = errno.custom.createError('SpecificError', MyError) // inherits from MyError
-var OtherError = errno.custom.createError('OtherError', MyError)
+var create = require('errno').custom.createError
+var MyError = create('MyError') // inherits from Error
+var SpecificError = create('SpecificError', MyError) // inherits from MyError
+var OtherError = create('OtherError', MyError)
 
 // use them!
 if (condition) throw new SpecificError('Eeek! Something bad happened')
@@ -115,10 +114,11 @@ The resulting error object passed through the callback will have the following p
 ## Contributors
 
 * [bahamas10](https://github.com/bahamas10) (Dave Eddy) - Added CLI
+* [ralphtheninja](https://github.com/ralphtheninja) (Lars-Magnus Skog)
 
 ## Copyright & Licence
 
-*Copyright (c) 2012 [Rod Vagg](https://github.com/rvagg) ([@rvagg](https://twitter.com/rvagg))*
+*Copyright (c) 2012-2015 [Rod Vagg](https://github.com/rvagg) ([@rvagg](https://twitter.com/rvagg))*
 
 Made available under the MIT licence:
 

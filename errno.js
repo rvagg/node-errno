@@ -1,6 +1,6 @@
 var all = module.exports.all = [
   {
-    errorno: -2,
+    errno: -2,
     code: 'ENOENT',
     description: 'no such file or directory'
   },

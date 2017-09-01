@@ -86,7 +86,7 @@ You will need to install with `npm install errno -g` if you want the `errno` com
 <a name="customerrors"></a>
 ## Custom errors
 
-Use `errno.custom.createError()` to create custom `Error` objects to throw around in your Node.js library. Create error heirachies so `instanceof` becomes a useful tool in tracking errors. Call-stack is correctly captured at the time you create an instance of the error object, plus a `cause` property will make available the original error object if you pass one in to the constructor.
+Use `errno.custom.createError()` to create custom `Error` objects to throw around in your Node.js library. Create error hierarchies so `instanceof` becomes a useful tool in tracking errors. Call-stack is correctly captured at the time you create an instance of the error object, plus a `cause` property will make available the original error object if you pass one in to the constructor.
 
 ```js
 var create = require('errno').custom.createError

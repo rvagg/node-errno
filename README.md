@@ -2,7 +2,9 @@
 
 > Better [libuv](https://github.com/libuv/libuv)/[Node.js](https://nodejs.org)/[io.js](https://iojs.org) error handling & reporting. Available in npm as *errno*.
 
+[![npm](https://img.shields.io/npm/v/errno.svg)](https://www.npmjs.com/package/errno)
 [![Build Status](https://secure.travis-ci.org/rvagg/node-errno.png)](http://travis-ci.org/rvagg/node-errno)
+[![npm](https://img.shields.io/npm/dm/errno.svg)](https://www.npmjs.com/package/errno)
 
 * [errno exposed](#errnoexposed)
 * [Custom errors](#customerrors)

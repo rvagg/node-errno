@@ -26,6 +26,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "tape test.js"
+    "test": "node --use_strict test.js"
   }
 }

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var test  = require('tape')
   , errno = require('./')
 

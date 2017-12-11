@@ -18,6 +18,8 @@
     "errno": "./cli.js"
   },
   "devDependencies": {
+    "error-stack-parser": "^2.0.1",
+    "inherits": "^2.0.3",
     "tape": "~4.8.0"
   },
   "repository": {

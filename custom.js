@@ -15,7 +15,7 @@ function init (type, message, cause) {
 function CustomError (message, cause) {
   Error.call(this)
   if (Error.captureStackTrace)
-    Error.captureStackTrace(this, CustomError)
+    Error.captureStackTrace(this, this.constructor)
   init.call(this, 'CustomError', message, cause)
 }
 

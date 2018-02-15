@@ -75,9 +75,10 @@ test('callstack', function (t) {
 test('error without message', function (t) {
   const Cust = errno.create('WriteError')
   const cust = new Cust({
-      code: 22
-    , message: ''
-    , name: 'QuotaExceededError'})
+    code: 22,
+    message: '',
+    name: 'QuotaExceededError'
+  })
 
   t.equal(cust.name, 'WriteError', 'correct custom name')
   t.equal(cust.type, 'WriteError', 'correct custom type')
